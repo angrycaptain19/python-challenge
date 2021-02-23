@@ -1,4 +1,4 @@
-import os 
+import os
 import csv 
 
 #Collecting Data From Resources Folder 
@@ -24,16 +24,15 @@ with open(budget_data_csv, 'r') as csvfile:
 profit = [int(i) for i in profit]
 
 #https://www.geeksforgeeks.org/python-program-to-find-sum-of-elements-in-list/
-totalprofit = 0 
-difference = 0 
-for row in range(0,len(profit)):
-    totalprofit = totalprofit + profit[row]
-    if row != len(profit) - 1:
-        difference = profit[row + 1] - profit[row]
-        changes.append(difference)
-    else:
+totalprofit = 0
+difference = 0
+for row in range(len(profit)):
+    totalprofit += profit[row]
+    if row == len(profit) - 1:
         break
 
+    difference = profit[row + 1] - profit[row]
+    changes.append(difference)
 print(" ' ' ' text")
 print("Finanical Analysis")
 print("--------------------------")
@@ -50,17 +49,13 @@ print(f"Average Changes: ${average}")
 highestincrease = max(changes)
 highestdecrease = min(changes)
 
-for row in range(0,len(changes)):
-    if changes[row] != highestincrease: 
-        pass 
-    else: 
+for row in range(len(changes)):
+    if changes[row] == highestincrease: 
         dateofincrease = date[row+1]
         break
 
-for row in range(0,len(changes)):
-    if changes[row] != highestdecrease: 
-        pass 
-    else: 
+for row in range(len(changes)):
+    if changes[row] == highestdecrease: 
         dateofdecrease = date[row+1]
         break
 
